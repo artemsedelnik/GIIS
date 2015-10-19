@@ -15,6 +15,18 @@ function drawLine(){
     var err1;
     var cells = [];
 
+    function deltaH(delta, x){
+        return delta + 2 * b * b * x + b * b;
+    }
+
+    function deltaV(delta, y){
+        return delta - 2 * a * a * y - a * a;
+    }
+
+    function deltaD(delta, x, y){
+        return delta + 2 * b * b * x + b * b - 2 * a * a * y - a * a;
+    }
+
     function Cell(x, y){
         this.x = x;
         this.y = y;
@@ -28,8 +40,8 @@ function drawLine(){
             x = cells[i].x;
             y = cells[i].y;
             plot(x + displacement, y + displacement, 1);
-            plot(x + displacement, -y + displacement, 1);
-            plot(-x + displacement, y + displacement, 1);
+            //plot(x + displacement, -y + displacement, 1);
+            //plot(-x + displacement, y + displacement, 1);
             plot(-x + displacement, -y + displacement, 1);
         }
     }
@@ -39,30 +51,37 @@ function drawLine(){
         cells.push(new Cell(x, y));
 
         if (delta < 0) {
-            err = 2 * delta + 2 * a * y - 1;
+            //err = 2 * delta + 2 * a * y - 1;
+            err = Math.abs(deltaH(delta, x)) - Math.abs(deltaD(delta, x, y));
             if (err > 0) {
                 x = x + 1;
                 y = y - 1;
-                delta = delta + b * b * (2 * x + 1) + a * a * (1 - 2 * y);
+                //delta = delta + b * b * (2 * x + 1) + a * a * (1 - 2 * y);
+                delta = deltaD(delta, x, y);
             } else {
                 x = x + 1;
-                delta = delta +  b * b * (2 * x + 1);
+                //delta = delta +  b * b * (2 * x + 1);
+                delta = deltaH(delta, x);
             }
         } else if (delta > 0) {
-            err1 = 2 * (delta - b * b * x) - 1;
+            //err1 = 2 * (delta - b * b * x) - 1;
+            err1 = Math.abs(deltaD(delta, x, y)) - Math.abs(deltaV(delta, y));
             if (err1 > 0){
                 y = y - 1;
-                delta = delta + a * a * (1 - 2 * y);
+                //delta = delta + a * a * (1 - 2 * y);
+                delta = deltaV(delta, y);
             }
             else {
                 x = x + 1;
                 y = y - 1;
-                delta = delta + b * b * (2 * x + 1) + a * a * (1 - 2 * y);
+                //delta = delta + b * b * (2 * x + 1) + a * a * (1 - 2 * y);
+                delta = delta = deltaD(delta, x, y);
             }
         } else if (delta == 0) {
             x = x + 1;
             y = y - 1;
-            delta = delta + b * b * (2 * x + 1) + a * a * (1 - 2 * y);
+            //delta = delta + b * b * (2 * x + 1) + a * a * (1 - 2 * y);
+            delta = deltaD(delta, x, y);
         }
     }
     drawLine(cells);
