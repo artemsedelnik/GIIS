@@ -42,7 +42,7 @@ function drawLine(){
             plot(x + displacement, y + displacement, 1);
             //plot(x + displacement, -y + displacement, 1);
             //plot(-x + displacement, y + displacement, 1);
-            plot(-x + displacement, -y + displacement, 1);
+            //plot(-x + displacement, -y + displacement, 1);
         }
     }
 
@@ -53,6 +53,7 @@ function drawLine(){
         if (delta < 0) {
             //err = 2 * delta + 2 * a * y - 1;
             err = Math.abs(deltaH(delta, x)) - Math.abs(deltaD(delta, x, y));
+            console.log(Math.abs(deltaH(delta, x)), Math.abs(deltaD(delta, x, y)));
             if (err > 0) {
                 x = x + 1;
                 y = y - 1;
@@ -75,7 +76,7 @@ function drawLine(){
                 x = x + 1;
                 y = y - 1;
                 //delta = delta + b * b * (2 * x + 1) + a * a * (1 - 2 * y);
-                delta = delta = deltaD(delta, x, y);
+                delta = deltaD(delta, x, y);
             }
         } else if (delta == 0) {
             x = x + 1;
