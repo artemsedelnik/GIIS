@@ -1,4 +1,4 @@
-var sheet = [20,20];
+var sheet = [20, 20];
 var checkPoint = 0;
 var segment = {
     firstBound: { coordX: 0, coordY: 0, coordZ: 0, coordW: 1},
