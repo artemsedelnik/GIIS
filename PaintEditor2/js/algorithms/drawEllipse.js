@@ -1,11 +1,9 @@
 /**
  * Created by ArtemSedelnik on 13.10.15.
  */
-function drawEllipse(){
+function drawEllipse(a, b){
 
     clearTable();
-    var a = 10;
-    var b = 5;
     var x = 0;
     var y = b;
     var delta = a * a  + b * b - a * a * b;

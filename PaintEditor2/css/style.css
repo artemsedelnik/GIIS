@@ -60,3 +60,16 @@
     top: 15px;
     width: 80px;
 }
+
+.modal-header{
+    text-align: center;
+}
+
+.modal{
+    display: none;
+}
+
+.formula{
+    height: 100px;
+    width: 200px;
+}

@@ -80,9 +80,53 @@ window.onload = function(){
         }
     });
 
-    $('#circle').on('click', drawCircle);
-    $('#ellipse').on('click', drawEllipse);
-    $('#line').on('click', drawLine);
+    $('#circle').on('click', function(){
+        var radius = 9;
+        $('div.a-b').hide();
+        $('div.circle').show();
+        $('.formula').attr('src', 'img/circle.gif');
+        $('.ok-btn').attr('id', 'circle-btn');
+        $('.modal-title').html('Circle');
+        $('input#radius').attr('value', radius);
+        $('#circle-btn').on('click', function(){
+            var radius = + $('input#radius').val(); //to int
+            drawCircle(radius);
+        });
+    });
+    $('#ellipse').on('click', function(){
+        var a = 10;
+        var b = 5;
+        $('div.circle').hide();
+        $('div.a-b').show();
+        $('.formula').attr('src', 'img/ellipse.gif');
+        $('.ok-btn').attr('id', 'ellipse-btn');
+        $('.modal-title').html('Ellipse');
+        $('input#a').attr('value', a);
+        $('input#b').attr('value', b);
+        $('#ellipse-btn').on('click', function() {
+            var a = +$('input#a').val(); //to int
+            var b = +$('input#b').val();
+            drawEllipse(a, b);
+        });
+    });
+
+    $('#hyperbole').on('click', function(){
+        var a = 5;
+        var b = 2;
+        $('div.circle').hide();
+        $('div.a-b').show();
+        $('.formula').attr('src', 'img/hyperbole.gif');
+        $('.ok-btn').attr('id', 'hyperbole-btn');
+        $('.modal-title').html('Hyperbole');
+        $('input#a').attr('value', a);
+        $('input#b').attr('value', b);
+        $('#hyperbole-btn').on('click', function(){
+            var a = + $('input#a').val(); //to int
+            var b = + $('input#b').val();
+            drawHyperbole(a, b);
+        });
+
+    });
 };
 
 function clearTable(){

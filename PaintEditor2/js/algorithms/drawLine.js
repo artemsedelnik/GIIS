@@ -1,11 +1,9 @@
 /**
  * Created by ArtemSedelnik on 19.10.15.
  */
-function drawLine(){
+function drawHyperbole(a, b){
 
     clearTable();
-    var a = 5;
-    var b = 2;
     var x = a;
     var y = 0;
     var delta = b * b + 2 * a * b * b - a * a;
@@ -19,7 +17,7 @@ function drawLine(){
         this.y = y;
     }
 
-    function drawLine(cells){
+    function plotCells(cells){
         var x;
         var y;
         for (var i = 0; i < cells.length; i++){
@@ -33,7 +31,6 @@ function drawLine(){
     }
 
     while (x + displacement < sheet[0] && y + displacement < sheet[1] && x + displacement > 0 && y + displacement > 0){
-
         cells.push(new Cell(x, y));
 
         if (delta < 0) {
@@ -64,5 +61,5 @@ function drawLine(){
             delta = delta - 2 * a * a * y - a * a + 2 * b * b * x + b * b;
         }
     }
-    drawLine(cells);
+    plotCells(cells);
 }

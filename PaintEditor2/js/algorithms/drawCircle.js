@@ -1,10 +1,9 @@
 /**
  * Created by ArtemSedelnik on 13.10.15.
  */
-function drawCircle(){
+function drawCircle(radius){
 
     clearTable();
-    var radius = 9;
     var x = 0;
     var y = radius;
     var delta = 2 * (1 - radius);
